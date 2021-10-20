@@ -113,5 +113,3 @@ func main() {
 	r.GET("/download", download)
 	r.Run(":8888")
 }
-
-// /home/liuyang/code/go//src
