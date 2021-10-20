@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Home</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    .tr_dir {
+      background-color: #df7;
+    }
+
+    .tr_file {
+      background-color: #d9edf7;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="panel panel-default box">
+    <div class="panel-body">
+      <h1>局域网文件共享</h1>
+
+      <ol class="breadcrumb">
+        {{ range $index, $headline := .headlines }}
+        <li><a href="/?path={{ $headline.Url }}">{{ $headline.Path }}</a></li>
+        {{ end }}
+      </ol>
+
+      <table class="table">
+        <tr>
+          <th>编号</th>
+          <th>文件名称</th>
+          <th>文件大小</th>
+        </tr>
+
+        <tr class="tr_dir">
+          <th>-1</th>
+          <th><a href="/?path={{$.pre_path}}" >..</th></a>
+          <th>0</th>
+        </tr>
+
+        {{ range $index,$file := .files}}
+        {{ if $file.IsDir }}
+        <tr class="tr_dir">
+          <th>{{ $index }}</th>
+          <th><a href="/?path={{$.current_path}}/{{$file.Name}}">{{ $file.Name }}</th></a>
+          <th>{{ $file.Size }}</th>
+        </tr>
+        {{ else }}
+        <tr class="tr_file">
+          <th>{{ $index }}</th>
+          <th><a href="/download?file={{$file.Name}}">{{ $file.Name }}</th></a>
+          <th>{{ $file.Size }}</th>
+        </tr>
+        {{ end }}
+        {{ end }}
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
