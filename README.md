@@ -4,4 +4,4 @@
 
 程序运行效果图：
 
-![程序运行效果图](https://github.com/Coder-Liuu/gin-LAN-share-file/tree/main/dome_image/image.jpg)
+![程序运行效果图](https://github.com/Coder-Liuu/gin-LAN-share-file/blob/main/dome_image/image.png)
